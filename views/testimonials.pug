@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  section.testimonials-section
+    h2 Testimonials
+    form.testimonial-form(method="POST", action="/testimonials")
+      input(type="text", name="name", placeholder="Name", required)
+      input(type="text", name="role", placeholder="Role", required)
+      textarea(name="message", placeholder="Message", required)
+      button(type="submit") Add
+
+    ul.testimonial-list
+      each t in testimonials
+        li.testimonial-item
+          div.testimonial-info
+            strong= t.name
+            |  (#{t.role}) - #{t.message}
+          form(method="POST", action=`/testimonials/delete/${t._id}`)
+            button(type="submit") Delete

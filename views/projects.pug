@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  section.projects-section
+    h2 Projects
+    form.project-form(method="POST", action="/projects")
+      input(type="text", name="title", placeholder="Title", required)
+      input(type="text", name="description", placeholder="Description", required)
+      input(type="text", name="technologies", placeholder="Technologies", required)
+      button(type="submit") Add
+
+    ul.project-list
+      each p in projects
+        li.project-item
+          div.project-info
+            strong= p.title
+            |  - #{p.description} [#{p.technologies.join(', ')}]
+          form(method="POST", action=`/projects/delete/${p._id}`)
+            button(type="submit") Delete

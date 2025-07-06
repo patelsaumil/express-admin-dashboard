@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title Admin Dashboard
+    link(rel="stylesheet", href="/css/styles.css")
+  body
+    header
+      nav.navbar
+        div.logo Admin Dashboard
+        ul.nav-links
+          li: a(href="/projects") Projects
+          li: a(href="/testimonials") Testimonials
+    main.container
+      block content
